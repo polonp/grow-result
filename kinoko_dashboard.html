@@ -148,6 +148,7 @@ body { background:var(--bg); color:var(--text); font-family:"Noto Sans JP",sans-
 
 /* ── Responsive / Mobile ── */
 @media(max-width:768px){
+  .title-bg { filter:grayscale(20%) brightness(0.55) !important; }
   /* Layout: sidebar becomes bottom nav */
   .app { flex-direction:column; }
   .sidebar {
@@ -190,7 +191,7 @@ body { background:var(--bg); color:var(--text); font-family:"Noto Sans JP",sans-
   .main { padding:16px 12px 100px; }
 
   /* Title screen */
-  .title-logo { font-size:clamp(40px,12vw,70px); }
+  .title-logo { font-size:clamp(32px,10vw,56px); }
   .title-content { padding:0 0 80px 28px; }
 
   /* Page header */
@@ -214,7 +215,7 @@ body { background:var(--bg); color:var(--text); font-family:"Noto Sans JP",sans-
 
 /* Very small phones */
 @media(max-width:390px){
-  .title-logo { font-size:36px; }
+  .title-logo { font-size:28px; }
   .title-content { padding:0 0 80px 16px; }
 }
 
@@ -342,8 +343,8 @@ body { background:var(--bg); color:var(--text); font-family:"Noto Sans JP",sans-
   background:rgba(255,255,255,0.2);
 }
 .title-enter-text {
-  font-size:9px; letter-spacing:4px; text-transform:uppercase;
-  color:rgba(255,255,255,0.35);
+  font-size:10px; letter-spacing:4px; text-transform:uppercase;
+  color:rgba(255,255,255,0.75);
 }
 
 /* Year 6 badge — top right */
@@ -375,7 +376,7 @@ body { background:var(--bg); color:var(--text); font-family:"Noto Sans JP",sans-
   </div>
   <div class="title-enter">
     <div class="title-enter-line"></div>
-    <div class="title-enter-text">タップして入る</div>
+    <div class="title-enter-text">ENTER</div>
     <div class="title-enter-line"></div>
   </div>
   <div style="position:absolute;bottom:16px;left:20px;font-size:9px;letter-spacing:1px;color:rgba(255,255,255,0.08);">© 2026 polonp</div>
