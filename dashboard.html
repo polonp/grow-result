@@ -599,7 +599,7 @@ body::before {
   body.view-mode::before {
     content:'';
     position:fixed; inset:0;
-    background:rgba(232,232,232,0.82);
+    background:rgba(0,0,0,0.55);
     z-index:0;
     pointer-events:none;
   }
@@ -2162,6 +2162,7 @@ renderAll();
 function enterDashboard() {
   const el = document.getElementById('title-screen');
   el.classList.add('hide');
+  document.body.classList.add('view-mode');  // ← 写真をbodyに表示
   setTimeout(() => { el.style.display = 'none'; }, 7500);
   setTimeout(() => { document.getElementById('topbar').style.opacity = '1'; }, 7500);
   setTimeout(() => { const s = document.getElementById('splitNav'); if (s) s.style.opacity = '1'; }, 3000);
