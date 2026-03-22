@@ -1338,6 +1338,11 @@ function renderSidebar() {
 // ── Views ───────────────────────────────────────────────────────
 function renderView() {
   const el = document.getElementById('view');
+  // Clear background unless we're going to week view
+  const isWeekView = currentView.month && currentView.week && !currentView.dayDate;
+  if (!isWeekView) {
+    document.body.style.backgroundImage = '';
+  }
   if (currentView === 'overview') { el.innerHTML = renderOverview(); }
   else if (currentView.split && !currentView.type) { el.innerHTML = renderSplitView(currentView.split); }
   else if (currentView.split && currentView.type && !currentView.month) { el.innerHTML = renderSectionView(currentView.split, currentView.type); }
@@ -1611,6 +1616,15 @@ function renderMonthView(split, month) {
 }
 
 function renderWeekView(split, month, week) {
+  // Set background photo for this week
+  const _wbKey = 'week' + Math.min(Number(week), 5);
+  if (typeof WEEK_BG !== 'undefined' && WEEK_BG[_wbKey]) {
+    document.body.style.backgroundImage = "url('" + WEEK_BG[_wbKey] + "')";
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundAttachment = 'fixed';
+  }
+
   const sessions = getSessions(currentYear, split, 'scrim', month, week);
   const DAY_EN  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const COLS = ['#e8357a','#00b8e8','#e8a835','#35e87a','#a835e8','#e85835','#35a8e8','#e8357a'];
