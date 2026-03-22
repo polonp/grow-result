@@ -1603,7 +1603,9 @@ function openDayModal(split, month, week, dayDate, blockNum) {
   </div>
   ${(s?.resultUrl || sheet?.meta?.resultUrl) ? `<div style="margin-bottom:16px;"><a href="${s?.resultUrl || sheet?.meta?.resultUrl}" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:2px;color:#00b8e8;text-decoration:none;border:1px solid rgba(0,184,232,0.35);padding:5px 14px;border-radius:4px;">🔗 公式リザルト</a></div>` : ''}`;
 
-  if (sheet?.tableHTML) {
+  if (s?.tableHTML) {
+    html += `<div style="overflow-x:auto;background:#e8e8e8;border-radius:8px;">${s.tableHTML}</div>`;
+  } else if (sheet?.tableHTML) {
     html += `<div style="overflow-x:auto;background:#e8e8e8;border-radius:8px;">${sheet.tableHTML}</div>`;
   } else if (s) {
     html += `<div style="display:flex;gap:24px;flex-wrap:wrap;padding:4px 0;">
