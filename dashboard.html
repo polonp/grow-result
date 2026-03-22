@@ -3581,7 +3581,12 @@ function enterDashboard() {
     let latest = '';
     const s = yd[split];
     if (!s) return latest;
-    Object.values(s.scrim?.months || {}).forEach(arr => arr.forEach(x => { if ((x.date||'') > latest) latest = x.date; }));
+    Object.values(s.scrim?.months || {}).forEach(monthData => {
+      const weeks = monthData?.weeks || monthData || {};
+      Object.values(weeks).forEach(arr => {
+        if (Array.isArray(arr)) arr.forEach(x => { if ((x.date||'') > latest) latest = x.date; });
+      });
+    });
     (s.proLeague?.sessions||[]).forEach(x => { if ((x.date||'') > latest) latest = x.date; });
     (s.playoffs?.sessions||[]).forEach(x => { if ((x.date||'') > latest) latest = x.date; });
     return latest;
