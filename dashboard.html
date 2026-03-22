@@ -557,7 +557,6 @@ body::before {
 <style id="result-table-css">
 #tableViewContent {
 
-  :root {
     --bg: #e8e8e8;
     --panel: #dedede;
     --border: #c4c4c4;
@@ -584,7 +583,10 @@ body::before {
     --game-bg: #c8c8c8;
     --subtotal-col: rgba(0,0,0,0.05);
     --total-border: rgba(0,0,0,0.25);
-  }
+  
+}
+
+  
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--bg); color:var(--text); font-family:"Barlow","Zen Kaku Gothic New",sans-serif; font-weight:300; min-height:100vh; padding:32px 20px; }
   body.view-mode {
@@ -977,7 +979,6 @@ body::before {
   }
 
 
-}
 #tableViewContent table { min-width:1100px; width:100%; border-collapse:collapse; table-layout:fixed; }
 </style>
 </head>
@@ -2068,9 +2069,8 @@ function openTableView() {
   const bgUrl = (typeof WEEK_BG !== 'undefined' && WEEK_BG[bgKey]) ? WEEK_BG[bgKey] : '';
 
   const overlay = document.getElementById('tableViewOverlay');
-  const photoBg = document.getElementById('tableViewPhotoBg');
-  photoBg.style.backgroundImage = bgUrl ? "url('" + bgUrl + "')" : 'none';
-  photoBg.style.minHeight = bgUrl ? '260px' : '0';
+  overlay.style.backgroundImage = bgUrl ? "url('" + bgUrl + "')" : 'none';
+  overlay.style.backgroundColor = bgUrl ? '' : '#1a1a22';
 
   // Build header with session info
   const placeColor = !s?.place ? '#aaa'
@@ -2189,20 +2189,16 @@ function enterDashboard() {
   </div>
 </div>
 
-<div id="tableViewOverlay" style="display:none;position:fixed;inset:0;z-index:3000;overflow-y:auto;background:#111;">
-  <!-- Photo header area (top portion with photo bg) -->
-  <div id="tableViewPhotoBg" style="position:relative;width:100%;background-size:cover;background-position:center;background-attachment:scroll;">
-    <!-- Dark overlay on photo -->
-    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(17,17,17,1) 100%);"></div>
-    <!-- Header content on photo -->
-    <div style="position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:36px 32px 40px;">
-      <button onclick="closeTableView()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:18px;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;">✕</button>
-      <div id="tableViewHeader"></div>
-    </div>
-  </div>
-  <!-- Table on clean background -->
-  <div style="background:#e8e8e8;padding:24px 16px 48px;">
-    <div style="max-width:1300px;margin:0 auto;overflow-x:auto;">
+<div id="tableViewOverlay" style="display:none;position:fixed;inset:0;z-index:3000;overflow-y:auto;background-size:cover;background-position:center;">
+  <!-- Dark overlay on photo -->
+  <div style="position:fixed;inset:0;background:rgba(0,0,0,0.45);pointer-events:none;"></div>
+  <!-- Content -->
+  <div style="position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:32px 24px 60px;">
+    <button onclick="closeTableView()" style="position:fixed;top:18px;right:24px;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:18px;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;">✕</button>
+    <!-- Header: dark translucent -->
+    <div id="tableViewHeader" style="margin-bottom:20px;"></div>
+    <!-- Table: semi-transparent white, shows photo behind -->
+    <div style="background:rgba(232,232,232,0.88);border-radius:10px;overflow-x:auto;box-shadow:0 8px 40px rgba(0,0,0,0.5);">
       <div id="tableViewContent"></div>
     </div>
   </div>
