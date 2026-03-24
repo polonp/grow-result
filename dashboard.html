@@ -1796,7 +1796,15 @@ function renderDayDetailView(split, month, week, dayDate) {
             ${!document.body.classList.contains('dash-view') ? `<button ${editCall} style="font-size:10px;padding:2px 8px;background:transparent;border:1px solid var(--border);border-radius:3px;cursor:pointer;color:var(--muted);">編集</button>` : ''}
           </div>
         </div>
-        <div style="border:1px solid var(--border);border-radius:0 0 6px 6px;overflow-x:auto;background:#fff;">
+        <div style="border:1px solid var(--border);border-top:none;padding:7px 14px 6px;background:var(--panel);display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+          <span style="font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:'Barlow',sans-serif;">LEGEND</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.45);text-transform:uppercase;font-family:'Barlow',sans-serif;"><span style="width:8px;height:8px;border-radius:2px;background:#f4b4b4;flex-shrink:0;"></span>アサルト</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.45);text-transform:uppercase;font-family:'Barlow',sans-serif;"><span style="width:8px;height:8px;border-radius:2px;background:#b4e4b4;flex-shrink:0;"></span>スカーミッシャー</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.45);text-transform:uppercase;font-family:'Barlow',sans-serif;"><span style="width:8px;height:8px;border-radius:2px;background:#f8f0c8;flex-shrink:0;"></span>リコン</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.45);text-transform:uppercase;font-family:'Barlow',sans-serif;"><span style="width:8px;height:8px;border-radius:2px;background:#c8d8f4;flex-shrink:0;"></span>コントローラー</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.45);text-transform:uppercase;font-family:'Barlow',sans-serif;"><span style="width:8px;height:8px;border-radius:2px;background:#e8d4f4;flex-shrink:0;"></span>サポート</span>
+        </div>
+        <div style="border:1px solid var(--border);border-top:none;border-radius:0 0 6px 6px;overflow-x:auto;background:#fff;">
           ${s.tableHTML
             ? '<div style="padding:12px 0;">' + s.tableHTML + '</div>'
             : s.url
